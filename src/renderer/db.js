@@ -29,7 +29,7 @@ export function initDb() {
     console.log('nedb=> initDb 查询setting', doc);
     if (doc.length === 0) {
       settingDb.insert(defaultData, (err, doc) => {
-        console.log('nedb=> 初始化数据', doc);
+        console.log('nedb=> 初始化数据库', doc);
         if (err) {
           console.log('nedb error=>', err);
         }
@@ -75,7 +75,9 @@ export function saveChartData(option) {
       const todyData = res[date];
       let data;
       if (todyData) {
-        const { work, fail, success, ahead } = todyData;
+        const {
+          work, fail, success, ahead,
+        } = todyData;
         data = {
           ...res,
           [date]: {
@@ -113,8 +115,8 @@ export function saveChartData(option) {
           ahead: type === 2 ? 1 : 0,
         },
       };
-      chartDb.insert(data, (err, doc) => {
-        console.log(err)
+      chartDb.insert(data, (err) => {
+        console.log('nedb err=>', err);
       });
     }
   });

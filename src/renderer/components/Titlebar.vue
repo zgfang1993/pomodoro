@@ -1,21 +1,20 @@
 <template>
   <nav class="title-bar">
-    <i class="iconfont" :class="[drawerOpened ? 'icon-back' : 'icon-caidan']" @click="toggleDrawer"></i>
+    <i class="iconfont" :class="drawerOpened ? 'icon-back' : 'icon-caidan'" @click="toggleDrawer"></i>    
     <h1>小番茄计时</h1>
     <div class="action">
-      <i class="iconfont icon-zuixiaohua" @click="minWin"></i>
       <i class="iconfont icon-close" @click="closeWin"></i>
     </div>
   </nav>
 </template>
 <script>
-import { ipcRenderer } from 'electron'
+import { ipcRenderer } from 'electron';
 
 export default {
   computed: {
     drawerOpened() {
       return this.$store.getters.drawerOpened;
-    }
+    },
   },
   methods: {
     toggleDrawer() {
@@ -23,9 +22,6 @@ export default {
     },
     closeWin() {
       ipcRenderer.send('pomodoro:close-window');
-    },
-    minWin() {
-      ipcRenderer.send('pomodoro:min-window');
     }
   },
 };
@@ -40,6 +36,7 @@ export default {
     top: 16px;
     left: 13px;
     color: $colorPrimary;
+    cursor: pointer;
   }
   h1 {
     font-size: 16px;
@@ -52,6 +49,7 @@ export default {
     i {
       font-size: 20px;
       color: $colorPrimary;
+      cursor: pointer;
     }
   }
 }

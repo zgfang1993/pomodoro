@@ -1,0 +1,83 @@
+.theme-dark {
+  background: #2F384B;
+  .title-bar {
+    h1 {
+      color: #fff;
+    }
+    i {
+      color: #858C99;
+    }
+  }
+  .time-dial {
+    .dial-fill-work {
+      stroke: #FF4E4D;
+    }
+    .dial-time {
+      color: #fff;
+    }
+    .dial-stage {
+      color: #fff;
+    }
+  }
+  .time-controller {
+    i {
+      color: #fff;
+    }
+  }
+  .round-info {
+    color: #fff;
+  }
+  .drawer {
+    .tabs {
+      background: #2F384B;
+      color: #fff;
+      .tab.active span {
+        border-bottom: 2px solid #FF4E4D;
+      }
+    }
+    .setting {
+      background: #3D4457;
+      color: #858C99;
+      .setting-item {
+        > h5 {
+          color: #858C99;
+        }
+        > span{
+          background-color: #2F384B;
+          color: #fff;
+        }
+        .ant-slider-rail {
+          background: #2F384B;
+        }
+        .ant-slider-track {
+          background: #FF4E4D;
+        }
+        .ant-slider-handle {
+          border: solid 2px #FF4E4D;
+        }
+
+      }
+      .setting-switch-item {
+        .ant-switch.ant-switch-checked {
+          background: #FF4E4D;
+        }
+        a {
+          color: #fff;
+        }
+      }
+    }
+    .data-center {
+      .icon-export {
+        color: #858C99;
+      }
+      .today-board > div span {
+        color: #FF4E4D;
+      }
+      .chart-controll i:not(.disabled),
+      .chart-controll .date {
+        color: #FF4E4D;
+      }
+    }
+
+  }
+}

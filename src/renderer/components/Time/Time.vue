@@ -31,7 +31,7 @@ import config from '@/config/index';
 import Timer from '@/utils/timer';
 import EVENT from '@/utils/event';
 import { initDb, querySetting, saveChartData } from '../../db.js';
-import tomotoIcon from '../../../img/tomoto.png'
+import tomotoIcon from '../../../img/tomoto.png';
 
 const { TIME_ROUND } = config;
 
@@ -42,7 +42,7 @@ export default {
       timerStarted: false,
       timer: null,
       minutes: 1,
-      tomotoIcon
+      tomotoIcon,
     };
   },
   components: {
@@ -93,7 +93,7 @@ export default {
     },
     TIME_ROUND() {
       return TIME_ROUND;
-    }
+    },
   },
   methods: {
     initData() {
@@ -101,20 +101,20 @@ export default {
       initDb();
 
       // 更新store为数据库数据
-      querySetting((res)=>{
-        if(res){
-          Object.keys(res).forEach(key => {
-            if(key !== '_id'){
+      querySetting((res) => {
+        if (res) {
+          Object.keys(res).forEach((key) => {
+            if (key !== '_id') {
               const payload = {
                 key,
                 val: res[key],
-                init: true
+                init: true,
               };
               this.$store.dispatch('setTimerState', payload);
               this.$store.dispatch('setSettingState', payload);
             }
           });
-          console.log('dispatch 初始化',this.$store.getters)
+          console.log('dispatch 初始化', this.$store.getters);
         }
         this.initTimer();
       });
@@ -178,11 +178,11 @@ export default {
         }
       });
     },
-    changeRound(option={}) {
+    changeRound(option = {}) {
       const { currentRound, round, rounds } = this;
-      console.log('changeRound', currentRound, round, rounds)
+      console.log('changeRound', currentRound, round, rounds);
       if (currentRound === TIME_ROUND.WORK) { // 专注
-        if (round + 1> rounds) {
+        if (round + 1 > rounds) {
           this.$store.dispatch('updateCurrentRound', TIME_ROUND.LONG_BREAK);
           EVENT.$emit('start-long-break');
           return;
@@ -191,7 +191,7 @@ export default {
         EVENT.$emit('start-short-break');
         // 保存数据
         saveChartData({
-          type: option.skip ? 2 : 1  // type: 0放弃 1完成 2提前完成
+          type: option.skip ? 2 : 1, // type: 0放弃 1完成 2提前完成
         });
       } else if (currentRound === TIME_ROUND.SHORT_BREAK) { // 休息
         // add round
@@ -205,7 +205,7 @@ export default {
       }
     },
     skipRound() {
-      EVENT.$emit('time-end',{skip: true});
+      EVENT.$emit('time-end', { skip: true });
     },
     formatDouble(val) {
       if (val < 10) {
@@ -216,19 +216,18 @@ export default {
     handleMenuClick({ key }) {
       console.log(`Click on item ${key}`);
       // 重新开始
-      if(+key === 3){
+      if (+key === 3) {
         EVENT.$emit('time-init', {
-          auto: false
+          auto: false,
         });
-      }else {
+      } else {
         this.skipRound();
         // 保存数据
         saveChartData({
-          type: +key  // type: 0放弃 2提前完成
+          type: +key, // type: 0放弃 2提前完成
         });
       }
-      
-    }
+    },
   },
   mounted() {
     this.initData();
@@ -238,7 +237,7 @@ export default {
 </script>
 <style lang="scss">
 .time-controller {
-  margin: 30px 0;
+  margin: 40px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -269,7 +268,7 @@ export default {
   top: 150px;
 }
 .round-info {
-  padding: 0 13px;
+  padding: 20px 13px;
   img {
     width: 18px;
     position: relative;

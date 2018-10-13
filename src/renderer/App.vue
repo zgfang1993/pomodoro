@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="theme">
     <titlebar></titlebar>
     <transition name="slide-left" mode="out-in">
       <drawer v-if="drawerOpened"/>
@@ -15,6 +15,8 @@ import titlebar from '@/components/Titlebar';
 import drawer from '@/components/Drawer/Drawer';
 import timer from '@/components/Time/Time';
 import notification from '@/components/Notification/Notification';
+// import '@/styles/iconfont.css'
+import '@/styles/theme-dark.scss'
 
 export default {
   name: 'pomodoro-vue',
@@ -28,17 +30,22 @@ export default {
     drawerOpened() {
       return this.$store.getters.drawerOpened;
     },
-    notifications () {
-      return this.$store.getters.notifications
+    notifications() {
+      return this.$store.getters.notifications;
+    },
+    theme() {
+      return `theme-${this.$store.getters.theme}`;
     },
   },
   methods: {
   },
   mounted() {
-  }
+  },
 };
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+  #app {
+    -webkit-app-region: drag;
+  }
 </style>

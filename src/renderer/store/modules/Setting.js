@@ -8,6 +8,7 @@ export default {
     notifications: defaultSetting.notifications,
     drawerOpened: false,
     currentDrawer: 'Setting',
+    theme: defaultSetting.theme,
   },
   getters: {
     autoStart(state) {
@@ -22,6 +23,9 @@ export default {
     notifications(state) {
       return state.notifications;
     },
+    theme(state) {
+      return state.theme;
+    }
   },
   mutations: {
     TOGGLE_DRAWER(state) {
@@ -31,8 +35,9 @@ export default {
       state[payload.key] = payload.val;
     },
     RESET_DEFAULTS(state) {
-      state.autoStart = false;
-      state.notifications = true;
+      state.autoStart = defaultSetting.autoStart;
+      state.notifications = defaultSetting.notifications;
+      state.theme = defaultSetting.theme;
     },
   },
   actions: {
@@ -42,15 +47,16 @@ export default {
     setSettingState({ commit }, payload) {
       commit('SET_STATE', payload);
       // 保存数据库
-      if (payload.key === 'autoStart' || payload.key === 'notifications') {
+      if (payload.key === 'autoStart' || payload.key === 'notifications' || payload.key === 'theme') {
         updateSetting(payload.key, payload.val);
       }
     },
     resetDefaults({ commit }) {
       commit('RESET_DEFAULTS');
       // 保存数据库
-      updateSetting('autoStart', false);
-      updateSetting('notifications', true);
+      updateSetting('autoStart', defaultSetting.autoStart);
+      updateSetting('notifications', defaultSetting.notifications);
+      updateSetting('theme', defaultSetting.theme);
     },
   },
 };

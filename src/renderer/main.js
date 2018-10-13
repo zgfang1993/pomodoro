@@ -7,7 +7,7 @@ import 'v-charts/lib/style.css';
 import 'ant-design-vue/dist/antd.css';
 
 import App from './App';
-import router from './router';
+// import router from './router';
 import store from './store';
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
@@ -20,7 +20,7 @@ Vue.component(Dropdown.name, Dropdown);
 
 new Vue({
   components: { App },
-  router,
+  // router,
   store,
   render: h => h(App),
 }).$mount('#app');

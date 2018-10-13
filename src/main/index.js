@@ -13,43 +13,33 @@ const winURL = process.env.NODE_ENV === 'development'
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 360,
-    height: 478,
+    height: 530,
     frame: false,
     backgroundColor: '#fff',
     useContentSize: true,
+    resizable: false,
+    zoomFactor:1
   });
-
+  console.log('winURL',winURL);
   mainWindow.loadURL(winURL);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
-function createTray() {
-  let appTray = null;
-  appTray = new Tray(path.join(__dirname, '../img/logo.png'));
-
-  // const menuTemp = [
-  //   {
-  //     label: '退出',
-  //     click: () => {
-  //       mainWindow.show()
-  //     },
-  //   },
-  // ];
-  // const menu = Menu.buildFromTemplate(menuTemp);
-
-
-  appTray.setToolTip('pomorodo');
-  // appTray.setContextMenu(menu);
-  appTray.on('click', () => {
-    mainWindow.show();
-  });
-}
+// function createTray() {
+//   let appTray = null;
+//   appTray = new Tray(path.join(__dirname, '../img/logo.png'));
+//   appTray.setToolTip('pomorodo');
+//   // appTray.setContextMenu(menu);
+//   appTray.on('click', () => {
+//     mainWindow.show();
+//   });
+// }
 
 app.on('ready', () => {
   createWindow();
-  createTray();
+  // createTray();
 });
 
 app.on('window-all-closed', () => {
@@ -66,7 +56,6 @@ app.on('activate', () => {
 
 ipcMain.on('pomodoro:close-window', () => {
   mainWindow.close();
-  appTray.close();
 });
 ipcMain.on('pomodoro:min-window', () => {
   mainWindow.minimize();

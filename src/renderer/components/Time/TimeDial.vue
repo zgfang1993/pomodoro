@@ -128,8 +128,8 @@ export default {
     },
   },
   mounted() {
-    querySetting((res)=>{
-      console.log('querySetting',res)
+    querySetting((res) => {
+      console.log('querySetting', res);
       const time = res ? res.workTime * 60 * 1000 : this.workTime;
       this.dialAnime(time);
     });
@@ -141,7 +141,7 @@ export default {
   .time-dial {
     display: flex;
     justify-content: center;
-    margin-top: 45px;
+    margin-top: 70px;
     position: relative;
   }
   .dial-fill {

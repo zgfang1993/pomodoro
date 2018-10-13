@@ -29,6 +29,18 @@
       <a-switch defaultChecked @change="(val)=>{saveSetting(val, 'notifications')}" size="small" :checked="notifications" />
     </div>
     <div class="setting-switch-item">
+      <span>换肤</span>
+      <a-dropdown :trigger="['click']" placement="bottomLeft">
+        <a class="ant-dropdown-link" href="#">
+          {{theme}} <a-icon type="down" />
+        </a>
+        <a-menu slot="overlay" @click="({key})=>{saveSetting(key, 'theme')}">
+          <a-menu-item key="light">light</a-menu-item>
+          <a-menu-item key="dark">dark</a-menu-item>
+        </a-menu>
+      </a-dropdown>  
+    </div>
+    <div class="setting-switch-item">
       <a href="javascript:;" @click="resetDefaults">重置</a>
     </div>
   </div>
@@ -68,7 +80,10 @@ export default {
     },
     notifications() {
       return this.$store.getters.notifications;
-    }
+    },
+    theme() {
+      return this.$store.getters.theme;
+    },
   },
   methods: {
     initData() {
@@ -87,9 +102,9 @@ export default {
       };
       this.$store.dispatch('setTimerState', payload);
       // 重置当前 专注/休息/长休息
-      if(setting && this.currentRound === setting){
+      if (setting && this.currentRound === setting) {
         EVENT.$emit('time-init', {
-          auto: false
+          auto: false,
         });
       }
     },
@@ -104,9 +119,9 @@ export default {
       this.$store.dispatch('resetDefaults');
       this.initData();
       EVENT.$emit('time-init', {
-        auto: false
-      })
-    }
+        auto: false,
+      });
+    },
   },
   mounted() {
     this.initData();
@@ -117,18 +132,17 @@ export default {
 <style lang="scss">
 .setting {
   height: calc(100% - 100px);
-  overflow-y: auto;
-  padding: 20px 30px 0 30px;
+  padding: 12px 30px 0 30px;
 }
 .setting-item {
-  margin: 0 0 20px;
+  margin: 0 0 10px;
   text-align: center;
   > h5 {
     font-weight: 400;
     margin-bottom: 5px;
   }
   > span {
-    font-size: 12px;
+    font-size: 10px;
     display: inline-block;
     width: 39px;
     background: #e3e3e3;
@@ -137,21 +151,29 @@ export default {
   }
   .ant-slider {
     margin: 10px 0 10px 7px;
+    -webkit-app-region: no-drag;
     .ant-slider-track {
       background-color: $colorPrimary;
     }
     .ant-slider-handle {
       border: solid 2px $colorPrimary;
     }
+    &:hover .ant-slider-handle:not(.ant-tooltip-open) {
+      border-color: $colorPrimary;
+    }
   }
 }
 .setting-switch-item {
-  margin: 15px 0;
+  margin: 10px 0;
   .ant-switch {
     float: right;
     &.ant-switch-checked {
       background-color: $colorPrimary;
     }
+  }
+  .ant-dropdown-link {
+    float: right;
+    color: inherit;
   }
 }
 </style>

@@ -7,6 +7,7 @@ const TIME_ROUND = {
 const defaultSetting = {
   autoStart: false,
   notifications: true,
+  theme: 'light',
   workTime: 25,
   shortBreakTime: 5,
   longBreakTime: 15,
