@@ -9,11 +9,11 @@ const pathPre = (electron.app || electron.remote.app).getPath('userData');
 // /Users/nali/Library/Application Support/Electron
 
 export const settingDb = new Datastore({
-  filename: path.join(pathPre, '/pomodoroSettingDb.db'),
+  filename: path.join(pathPre, '/pomodoro/settingDb.db'),
   autoload: true,
 });
 export const chartDb = new Datastore({
-  filename: path.join(pathPre, '/pomodoroChartDb.db'),
+  filename: path.join(pathPre, '/pomodoro/chartDb.db'),
   autoload: true,
 });
 

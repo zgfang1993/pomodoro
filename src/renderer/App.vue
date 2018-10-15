@@ -19,7 +19,7 @@ import notification from '@/components/Notification/Notification';
 import '@/styles/theme-dark.scss'
 
 export default {
-  name: 'pomodoro-vue',
+  name: 'pomodoro',
   components: {
     titlebar,
     timer,

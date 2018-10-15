@@ -157,7 +157,7 @@ export default {
     stroke: $colorDeepGreen;
   }
   .dial-bg {
-    stroke: $colorBg;
+    stroke: $colorGray;
   }
 </style>
 

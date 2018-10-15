@@ -1,5 +1,5 @@
 {
-  "name": "pomodoro-vue",
+  "name": "pomodoro",
   "version": "0.0.1",
   "author": "sherry <sherry.zhang@ximalaya.com>",
   "description": "An electron-vue project",
@@ -21,7 +21,7 @@
     "unit": "karma start test/unit/karma.conf.js"
   },
   "build": {
-    "productName": "pomodoro-vue",
+    "productName": "pomodoro",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"

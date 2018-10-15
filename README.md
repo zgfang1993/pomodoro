@@ -1,4 +1,4 @@
-# pomodoro-vue
+# pomodoro
 
 > An electron-vue project
 
