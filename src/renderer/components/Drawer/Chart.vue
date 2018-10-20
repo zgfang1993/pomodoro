@@ -5,7 +5,7 @@
     <div class="today-board board">
       <div>
         <span>{{dayData.work}}</span>
-        <h5>总关注数</h5>
+        <h5>总专注数</h5>
       </div>
       <div>
         <span>{{dayData.success}}</span>
@@ -52,11 +52,11 @@ export default {
       exportdata: {},
       page: 0,
       chartSettings: {
-        stack: { 总关注数: ['完成数', '放弃数'], 完成数: ['提前完成数'] },
+        stack: { 总专注数: ['完成数', '放弃数'], 完成数: ['提前完成数'] },
       },
       chartData: {
-        columns: ['日期', '总关注数', '完成数', '提前完成数', '放弃数'],
-        rows: [], // { '日期': '2018/09/01', '总关注数': 10, '完成数': 6, '提前完成数': 2,'放弃数': 4, },
+        columns: ['日期', '总专注数', '完成数', '提前完成数', '放弃数'],
+        rows: [], // { '日期': '2018/09/01', '总专注数': 10, '完成数': 6, '提前完成数': 2,'放弃数': 4, },
       },
     };
   },
@@ -168,7 +168,7 @@ export default {
               } = res[date];
               obj = {
                 日期: date,
-                总关注数: work,
+                总专注数: work,
                 完成数: success,
                 提前完成数: ahead,
                 放弃数: fail,
@@ -176,7 +176,7 @@ export default {
             } else {
               obj = {
                 日期: date,
-                总关注数: 0,
+                总专注数: 0,
                 完成数: 0,
                 提前完成数: 0,
                 放弃数: 0,
@@ -193,7 +193,7 @@ export default {
     exportData() {
       const tmpdata = [];
       tmpdata.A1 = { v: '' };
-      tmpdata.B1 = { v: '关注数' };
+      tmpdata.B1 = { v: '专注数' };
       tmpdata.C1 = { v: '失败数' };
       tmpdata.D1 = { v: '完成数' };
       tmpdata.E1 = { v: '提前完成数' };
@@ -313,5 +313,8 @@ export default {
         color: $colorPrimary;
       }
     }
+  }
+  .v-charts-data-empty {
+    background-color: rgba(255, 255, 255, 0.5);
   }
 </style>

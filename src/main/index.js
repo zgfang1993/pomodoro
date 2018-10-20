@@ -18,7 +18,7 @@ function createWindow() {
     backgroundColor: '#fff',
     useContentSize: true,
     resizable: false,
-    zoomFactor:1
+    zoomFactor:1,
   });
   console.log('winURL',winURL);
   mainWindow.loadURL(winURL);
@@ -54,10 +54,9 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('pomodoro:close-window', () => {
+ipcMain.on('close-window', () => {
   mainWindow.close();
 });
-ipcMain.on('pomodoro:min-window', () => {
-  mainWindow.minimize();
-});
-
+// ipcMain.on('min-window', () => {
+//   mainWindow.minimize();
+// });

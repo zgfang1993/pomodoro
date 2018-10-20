@@ -15,8 +15,8 @@ import titlebar from '@/components/Titlebar';
 import drawer from '@/components/Drawer/Drawer';
 import timer from '@/components/Time/Time';
 import notification from '@/components/Notification/Notification';
-// import '@/styles/iconfont.css'
-import '@/styles/theme-dark.scss'
+import '@/styles/iconfont.css';
+import '@/styles/theme-dark.scss';
 
 export default {
   name: 'pomodoro',
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
-  #app {
-    -webkit-app-region: drag;
-  }
+  // #app {
+  //   -webkit-app-region: drag;
+  // }
 </style>

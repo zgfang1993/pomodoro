@@ -9,7 +9,7 @@
       <a-dropdown :trigger="['click']" placement="bottomLeft">
         <i class="iconfont icon-stop ant-dropdown-link ant-dropdown-link"></i>
         <a-menu slot="overlay" @click="handleMenuClick">
-          <a-menu-item key="0" :disabled="currentRound === TIME_ROUND.WORK ? false : true">放弃关注</a-menu-item>
+          <a-menu-item key="0" :disabled="currentRound === TIME_ROUND.WORK ? false : true">放弃专注</a-menu-item>
           <a-menu-item key="2" :disabled="currentRound === TIME_ROUND.WORK ? false : true">提前完成</a-menu-item>
           <a-menu-item key="3">重新开始</a-menu-item>
         </a-menu>
@@ -72,9 +72,8 @@ export default {
     },
     formatTime() {
       const { time } = this.timer;
-      const currentTime = this.minutes * 60 - time;
-      const currMins = Math.floor(currentTime / 60);
-      const currSends = this.formatDouble(currentTime - currMins * 60);
+      const currMins = Math.floor(time / 60);
+      const currSends = this.formatDouble(time - currMins * 60);
 
       return `${currMins}:${currSends}`;
     },
@@ -161,7 +160,6 @@ export default {
         EVENT.$emit('time-init', {
           auto: this.autoStart,
         });
-        console.log('结束了', this.timer.time);
       });
 
       // 结束/更改设置
@@ -180,7 +178,6 @@ export default {
     },
     changeRound(option = {}) {
       const { currentRound, round, rounds } = this;
-      console.log('changeRound', currentRound, round, rounds);
       if (currentRound === TIME_ROUND.WORK) { // 专注
         if (round + 1 > rounds) {
           this.$store.dispatch('updateCurrentRound', TIME_ROUND.LONG_BREAK);

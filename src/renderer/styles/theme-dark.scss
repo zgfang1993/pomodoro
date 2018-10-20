@@ -77,6 +77,9 @@
       .chart-controll .date {
         color: $colorRed;
       }
+      .v-charts-data-empty {
+        background-color: rgba(47, 56, 75, 0.44);
+      }
     }
 
   }

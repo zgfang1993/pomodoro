@@ -1,7 +1,7 @@
 <template>
   <nav class="title-bar">
     <i class="iconfont" :class="drawerOpened ? 'icon-back' : 'icon-caidan'" @click="toggleDrawer"></i>    
-    <h1>小番茄计时</h1>
+    <h1>番茄钟</h1>
     <div class="action">
       <i class="iconfont icon-close" @click="closeWin"></i>
     </div>
@@ -21,7 +21,7 @@ export default {
       this.$store.dispatch('toggleDrawer');
     },
     closeWin() {
-      ipcRenderer.send('pomodoro:close-window');
+      ipcRenderer.send('close-window');
     }
   },
 };
@@ -29,11 +29,12 @@ export default {
 <style lang="scss">
 .title-bar {
   text-align: center;
-  padding: 18px 0 0 0;
+  padding: 16px 0;
+  -webkit-app-region: drag;
   > i {
     font-size: 20px;
     position: absolute;
-    top: 16px;
+    top: 15px;
     left: 13px;
     color: $colorPrimary;
     cursor: pointer;
@@ -41,6 +42,9 @@ export default {
   h1 {
     font-size: 16px;
     color: $colorPrimary;
+    cursor: default;
+    user-select: none;
+    margin: 0;
   }
   .action {
     position: absolute;
