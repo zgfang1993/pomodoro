@@ -1,11 +1,11 @@
 # pomodoro
 
-> 基于 electron-vue 开发的，一款简洁、实用的番茄工作法桌面应用。
-
-
 ![pomodoro](https://user-images.githubusercontent.com/14739234/47253614-f7ed5600-d487-11e8-8e9e-96d8f19e912b.gif)
 
-#### 特点
+#### Overview
+基于 electron-vue 开发的，一款简洁、实用的番茄工作法桌面应用。
+
+#### Features
 极简番茄钟，告别拖延，高效从此开始。
 - 界面简洁
 - 自定义番茄时间
